@@ -11,5 +11,6 @@ useHead({
 </script>
 
 <template>
+  <nav-bar />
   <router-view />
 </template>
