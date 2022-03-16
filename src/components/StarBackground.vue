@@ -8,6 +8,7 @@
 import { isDark } from '~/composables'
 const el = ref<HTMLCanvasElement | null>(null)
 const ctx = ref<CanvasRenderingContext2D | null>(null)
+// 动画帧，用于清除动画
 const animationFrameSequence = ref(0)
 const size = reactive(useWindowSize())
 
@@ -30,6 +31,12 @@ function initCanvas(canvas: HTMLCanvasElement, width = 400, height = 400) {
 }
 
 class RoundItem {
+  public index: number
+  public x: number
+  public y: number
+  public r: number
+  public color: string
+
   constructor(index: number, x: number, y: number) {
     this.index = index
     this.x = x
@@ -40,12 +47,14 @@ class RoundItem {
   }
 
   draw() {
-    ctx.value.fillStyle = this.color
-    ctx.value.shadowBlur = this.r * 2
-    ctx.value.beginPath()
-    ctx.value.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
-    ctx.value.closePath()
-    ctx.value.fill()
+    if (ctx.value !== null) {
+      ctx.value.fillStyle = this.color
+      ctx.value.shadowBlur = this.r * 2
+      ctx.value.beginPath()
+      ctx.value.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+      ctx.value.closePath()
+      ctx.value.fill()
+    }
   }
 
   move() {
@@ -58,7 +67,9 @@ class RoundItem {
 }
 
 function animate() {
-  ctx.value.clearRect(0, 0, size.width, size.height)
+  if (ctx.value !== null)
+    ctx.value.clearRect(0, 0, size.width, size.height)
+
   for (const i in round)
     round[i].move()
   animationFrameSequence.value = requestAnimationFrame(animate)
@@ -74,7 +85,7 @@ function initStars() {
 
 function main() {
   const canvas = el.value
-  initCanvas(canvas, size.width, size.height)
+  initCanvas(canvas as HTMLCanvasElement, size.width, size.height)
   initStars()
   animate()
 }
@@ -86,7 +97,8 @@ onMounted(() => {
 function clear() {
   // 清除动画 否则切换主题之后动画的速度会越来越快
   cancelAnimationFrame(animationFrameSequence.value)
-  ctx.value?.clearRect(0, 0, size.width, size.height)
+  if (ctx.value !== null)
+    ctx.value.clearRect(0, 0, size.width, size.height)
 }
 
 watch(isDark, (val) => {
