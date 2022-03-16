@@ -84,7 +84,7 @@ onMounted(() => {
 })
 
 function clear() {
-  // 清除动画 否则切换主题之后动画的速度会原来越快
+  // 清除动画 否则切换主题之后动画的速度会越来越快
   cancelAnimationFrame(animationFrameSequence.value)
   ctx.value?.clearRect(0, 0, size.width, size.height)
 }
