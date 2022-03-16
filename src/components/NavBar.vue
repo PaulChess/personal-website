@@ -18,7 +18,7 @@ import { isDark } from '~/composables'
     <nav class="nav">
       <div class="spacer" />
       <div class="right">
-        <router-link to="/posts">
+        <router-link to="/posts/postcss-preset-env-bit">
           <span class="lt-md:hidden">Blog</span>
           <div i-ri-article-line class="md:hidden" />
         </router-link>
