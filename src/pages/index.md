@@ -2,10 +2,9 @@
 title: PaulChess
 ---
 
-<!-- <ClientOnly> -->
-  <!-- todo: canvas 背景 -->
-  <!-- <Plum/> -->
-<!-- </ClientOnly> -->
+<ClientOnly>
+  <star-background />
+</ClientOnly>
 
 <ClientOnly>
   <router-link to="/index-zh">
