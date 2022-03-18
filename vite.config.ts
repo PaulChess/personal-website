@@ -76,6 +76,7 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-md
     // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
     Markdown({
+      wrapperComponent: 'post',
       wrapperClasses: markdownWrapperClasses,
       headEnabled: true,
       markdownItSetup(md) {

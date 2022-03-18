@@ -5,10 +5,6 @@ lang: zh
 duration: 5min
 ---
 
-# Vue-Cli postcss-preset-env 配置踩坑
-
-## Background
-
 故事的背景是这样的：
 前段日子根据公司的UI颜色规范(黑白板)整理了一套css变量提供给同事们使用，这样就不用每次写颜色的时候都要根据UI稿重复适配黑白板了，直接一个css变量搞定。提供的变量表如下:
 
