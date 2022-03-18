@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
@@ -13,6 +14,7 @@ import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
+import matter from 'gray-matter'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -30,6 +32,17 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
+      extendRoute(route) {
+        const p = path.resolve(__dirname, route.component.slice(1))
+
+        if (!p.includes('projects.md')) {
+          const md = fs.readFileSync(p, 'utf-8')
+          const { data } = matter(md)
+          // inject frontmatter to router path
+          route.meta = Object.assign(route.meta || {}, { frontmatter: data })
+        }
+        return route
+      },
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
