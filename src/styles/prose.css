@@ -490,6 +490,15 @@
   margin-bottom: 0;
 }
 
+/* custom */
 .prose :where(ol,ul):not(.not-prose) {
   padding-left: 0 !important;
+}
+
+.prose :where(h2):not(.not-prose) {
+  margin: 1em 0 0.5em !important;
+}
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  font-style: initial !important;
 }
