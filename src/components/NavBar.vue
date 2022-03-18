@@ -12,8 +12,7 @@ import { isDark } from '~/composables'
       to="/"
       focusable="false"
     >
-      <img v-show="isDark" class="logo" src="/logo-dark.svg?url" alt="logo">
-      <img v-show="!isDark" class="logo" src="/logo.svg?url" alt="logo">
+      <div inline-block i-ri-chrome-fill w-8 h-8 />
     </router-link>
     <nav class="nav">
       <div class="spacer" />
