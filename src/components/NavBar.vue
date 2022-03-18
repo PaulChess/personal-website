@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { isDark } from '~/composables'
-
 const love = ref<HTMLElement | null>(null)
 
 const showRedLove = ref(false)
