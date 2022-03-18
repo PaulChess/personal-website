@@ -1,5 +1,6 @@
 ---
 title: PaulChess
+display: ''
 ---
 
 <ClientOnly>
