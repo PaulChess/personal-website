@@ -46,9 +46,9 @@ const props = defineProps<{
 
 const router = useRouter()
 const routes: Post[] = router.getRoutes()
-  .filter(i => i.path.startsWith('/posts') && i.meta.frontmatter?.date)
-  .sort((a, b) => +new Date(b.meta.frontmatter?.date) - +new Date(a.meta.frontmatter?.date))
-  .map(i => ({
+  .filter((i: any) => i.path.startsWith('/posts') && i.meta.frontmatter?.date)
+  .sort((a: any, b: any) => +new Date(b.meta.frontmatter?.date) - +new Date(a.meta.frontmatter?.date))
+  .map((i: any) => ({
     path: i.path,
     title: i.meta.frontmatter.title,
     date: i.meta.frontmatter.date,
@@ -58,7 +58,3 @@ const routes: Post[] = router.getRoutes()
 
 const posts = computed(() => props.posts || routes)
 </script>
-
-<style lang="less" scoped>
-
-</style>
