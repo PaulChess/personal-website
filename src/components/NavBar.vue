@@ -64,7 +64,7 @@ function cancelLike() {
           <div v-else i-ri-heart-line @click="clickLike" />
         </a>
         <a href="https://github.com/paulchess" target="_blank" title="GitHub">
-          <div i-carbon-logo-github />
+          <div i-carbon-logo-github class="lt-md:hidden" />
         </a>
         <toggle-theme />
       </div>
