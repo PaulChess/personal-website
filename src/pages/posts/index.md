@@ -3,7 +3,7 @@ title: Blog - paulchess
 display: ''
 ---
 
-<!-- <SubNav/> -->
+<SubNav/>
 
 <ClientOnly>
   <StarBackground />

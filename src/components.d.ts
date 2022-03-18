@@ -5,11 +5,13 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
+    EnhanceTag: typeof import('./components/EnhanceTag.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     ListPosts: typeof import('./components/ListPosts.vue')['default']
     NavBar: typeof import('./components/NavBar.vue')['default']
     README: typeof import('./components/README.md')['default']
     StarBackground: typeof import('./components/StarBackground.vue')['default']
+    SubNav: typeof import('./components/SubNav.vue')['default']
     ToggleTheme: typeof import('./components/ToggleTheme.vue')['default']
   }
 }

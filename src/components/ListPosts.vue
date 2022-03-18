@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul p-0 m-0>
     <template v-if="!posts.length">
       <div py2 op50>
         { nothing here yet }

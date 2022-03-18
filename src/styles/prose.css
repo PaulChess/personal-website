@@ -250,6 +250,7 @@
 .prose li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  list-style: none !important;
 }
 .prose > ul > li p {
   margin-top: 0.75em;
@@ -487,4 +488,8 @@
 }
 .prose-sm > :last-child {
   margin-bottom: 0;
+}
+
+.prose :where(ol,ul):not(.not-prose) {
+  padding-left: 0 !important;
 }

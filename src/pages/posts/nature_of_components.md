@@ -29,7 +29,7 @@ document.getElementById('app').innerHTML = html
 以 Vue 为例，一个组件最核心的内容就是 `render 函数`，而其他的 option 如 `data`、`computed`、`props` 等等都是为 render 函数提供数据来源。
 
 <br />
-<code>render函数</code> : 
+<enhance-tag>render函数</enhance-tag> : 
 <br />
 render函数 本可以直接产出 HTML 字符串，最终却产出了 `VNode (Virtual DOM)` ;  
 vNode 最终还是要渲染真实的 DOM，这个过程通常叫做 `patch`;  
