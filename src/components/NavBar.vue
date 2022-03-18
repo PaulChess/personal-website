@@ -1,5 +1,26 @@
-<script setup>
+<script setup lang="ts">
 import { isDark } from '~/composables'
+
+const love = ref<HTMLElement | null>(null)
+
+const showRedLove = ref(false)
+
+function clickLike() {
+  showRedLove.value = true
+  setTimeout(() => {
+    nextTick(() => {
+      if (love) {
+        const d = love.value
+        d?.classList.add('like-anim')
+      }
+    })
+  })
+}
+
+function cancelLike() {
+  showRedLove.value = false
+}
+
 </script>
 
 <template>
@@ -21,29 +42,30 @@ import { isDark } from '~/composables'
           <span class="lt-md:hidden">Blog</span>
           <div i-ri-book-2-line class="md:hidden" />
         </router-link>
-        <router-link to="/talks" class="lt-md:hidden">
+        <!-- <router-link to="/talks" class="lt-md:hidden">
           Talks
-        </router-link>
-        <router-link to="/podcasts" class="lt-md:hidden">
+        </router-link> -->
+        <!-- <router-link to="/podcasts" class="lt-md:hidden">
           Podcasts
-        </router-link>
-        <router-link to="/streams" class="lt-md:hidden">
+        </router-link> -->
+        <!-- <router-link to="/streams" class="lt-md:hidden">
           Streams
-        </router-link>
-        <router-link to="/projects">
+        </router-link> -->
+        <!-- <router-link to="/projects">
           <span class="lt-md:hidden">Projects</span>
           <div i-ri-lightbulb-line class="md:hidden" />
-        </router-link>
-        <router-link to="/sponsors-list" title="Sponsors">
-          <div i-ri-heart-line />
-        </router-link>
-        <router-link to="/bookmarks" title="Bookmarks">
+        </router-link> -->
+        <!-- <router-link to="/bookmarks" title="Bookmarks">
           <div i-ri-bookmark-line />
-        </router-link>
-        <router-link to="/notes" title="Notes">
+        </router-link> -->
+        <!-- <router-link to="/notes" title="Notes">
           <div i-ri-sticky-note-line />
-        </router-link>
-        <a href="https://github.com/paulchess" target="_blank" title="GitHub" class="lt-md:hidden">
+        </router-link> -->
+        <a title="like">
+          <div v-if="showRedLove" ref="love" i-ri-heart-fill text-red-600 @click="cancelLike" />
+          <div v-else i-ri-heart-line @click="clickLike" />
+        </a>
+        <a href="https://github.com/paulchess" target="_blank" title="GitHub">
           <div i-carbon-logo-github />
         </a>
         <toggle-theme />
@@ -95,5 +117,21 @@ import { isDark } from '~/composables'
 
 .nav .right > * {
   margin: auto;
+}
+
+.like-anim {
+  animation: like 1s ease-in-out;
+}
+
+@keyframes like {
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>
