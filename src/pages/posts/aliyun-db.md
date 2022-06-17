@@ -16,7 +16,7 @@ author: 沈佳棋
 
 ## 1. 本地电脑如何连接阿里云数据库 RDS Mysql?
 
-基本文档: https://help.aliyun.com/document_detail/26138.html
+[基本文档](https://help.aliyun.com/document_detail/26138.html)
 
 1. 进入 `实例列表` 查看数据库实例基本信息，点击 `查看连接` ⇒ `申请外网地址`(这里因为已经申请过了，所以显示的是 `释放外网地址`)，此时会得到外网地址和端口号
 
