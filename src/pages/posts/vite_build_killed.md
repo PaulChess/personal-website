@@ -34,10 +34,16 @@ executor failed running [/bin/sh -c pnpm run build]: exit code: 137
 
 ### 官方讨论
 
-`vite` 的官方 issue 里针对此问题有非常多的讨论，我先贴一下地址：https://github.com/vitejs/vite/issues/3661  
+`vite` 的官方 issue 里针对此问题有非常多的讨论，我先贴一下[地址](https://github.com/vitejs/vite/issues/3661)：  
 
 一通浏览下来，基本解法就是：  
-将 `vite build` 改为 `node --max-old-space-size=81920 node_modules/vite/bin/vite.js build`，也就是加了 `--max-old-space-size` 这个参数。
+将 `vite build` 改为：
+
+```shell
+node --max-old-space-size=81920 node_modules/vite/bin/vite.js build
+```
+
+也就是加了 `--max-old-space-size` 这个参数。
 
 经过这一通命令的修改，可以解决上述问题。
 
