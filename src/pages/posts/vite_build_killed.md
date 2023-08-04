@@ -141,3 +141,5 @@ allocToMax()
 
 1. 容器中的实际内存占用情况。
 2. `Webpack` 同样支持 ``TreeShaking`，那么用 `Webpack` 开发的大型项目中是否也存在同样的堆内存溢出问题？
+
+<img src="/public/qijiahao-chat.png" />
