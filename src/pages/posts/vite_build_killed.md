@@ -34,7 +34,7 @@ executor failed running [/bin/sh -c pnpm run build]: exit code: 137
 
 ### 官方讨论
 
-`vite` 的官方 issue 里针对此问题有非常多的讨论，我先贴一下[地址](https://github.com/vitejs/vite/issues/3661)：  
+`vite` 的官方 issue 里针对此问题有非常多的讨论，我先贴一下[地址](https://github.com/vitejs/vite/issues/3661)。  
 
 一通浏览下来，基本解法就是：  
 将 `vite build` 改为：
@@ -128,24 +128,24 @@ allocToMax()
 
 **3. 构建的时候什么东西消耗这么多内存呢？**
 
-我们知道，`vite` 是使用 `rollup` 进行打包的，我在 `rollup` 的站点上找到了相应的说明：
+我们知道，`Vite` 是使用 `Rollup` 进行打包的，我在 `Rollup` 的站点上找到了相应的说明：
 
 <img src="/public/rollup-memory.png" />
 
-由于 `rollup` 需要分析 `TreeShaking` 的相关副作用，它需要将所有模块信息都保存在内存中，那么当项目比较大，模块数量比较多的时候就可能会超出 Node 的内存限制。  
+由于 `Rollup` 需要分析 `TreeShaking` 的相关副作用，它需要将所有模块信息都保存在内存中，那么当项目比较大，模块数量比较多的时候就可能会超出 Node 的内存限制。  
 
-其次，如果项目是用 `ts` ，`tsc` 进行编译分析的时候也需要占用内存，如果内存没有得到即时释放的话，会加剧内存占用的情况。
+其次，如果项目是用 `TS` ，`tsc` 进行编译分析的时候也需要占用内存，如果内存没有得到即时释放的话，会加剧内存占用的情况。
 
 
 ### 总结
 
-1. 当 vite 构建报错的时候，可以通过配置 `--max-old-space-size` 参数扩大堆内存来解决。
-2. Node V8 引擎对堆内存有上限控制，上限值根据 node 的版本会有所区别。
-3. `rollup` 需要分析 `TreeShaking` 的相关副作用，它需要将所有模块信息都保存在内存中，那么当项目比较大，模块数量比较多的时候就可能会超出 Node 的内存限制。 
+1. 当 Vite 构建报错的时候，可以通过配置 `--max-old-space-size` 参数扩大堆内存来解决。
+2. Node V8 引擎对堆内存有上限控制，上限值根据 Node 的版本会有所区别。
+3. `Rollup` 需要分析 `TreeShaking` 的相关副作用，它需要将所有模块信息都保存在内存中，那么当项目比较大，模块数量比较多的时候就可能会超出 Node 的内存限制。 
 
 待确认点：
 
 1. 容器中的实际内存占用情况。
-2. `Webpack` 同样支持 ``TreeShaking`，那么用 `Webpack` 开发的大型项目中是否也存在同样的堆内存溢出问题？
+2. `Webpack` 同样支持 `TreeShaking`，那么用 `Webpack` 开发的大型项目中是否也存在同样的堆内存溢出问题？
 
 <img src="/public/qijiahao-chat.png" />
