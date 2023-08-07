@@ -3,6 +3,7 @@ title: MacOS13 清除 DNS 缓存
 date: 2023-08-07T00:00:00.000+00:00
 lang: zh
 duration: 2min
+author: 沈佳棋
 ---
 
 ### 问题背景
