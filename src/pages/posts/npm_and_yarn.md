@@ -284,11 +284,11 @@ CI环境一般指在容器环境里。
   "version": "0.0.1",
   "dependencies": {
     "axios": "^19.0.0",
-    ...
+    // ...
   },
   "devDependencies": {
     "request": "^18.0.0",
-    ...
+    // ...
   },
   "bundledDependencies": [
     "bundledD1",
